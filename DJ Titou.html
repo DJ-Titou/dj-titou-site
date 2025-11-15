@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Titou | Site Officiel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Configuration de la police Inter par défaut et du thème sombre */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Fond très sombre */
+            color: #f0f4f8; /* Texte clair */
+            scroll-behavior: smooth;
+        }
+
+        /* Styles personnalisés pour l'effet néon/glow */
+        .neon-text {
+            text-shadow: 0 0 7px rgba(100, 255, 255, 0.7), 0 0 10px rgba(100, 255, 255, 0.7);
+        }
+
+        .neon-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px #0ff, 0 0 15px #0ff;
+        }
+        .neon-button:hover {
+            background-color: #0ff;
+            color: #0d1117;
+            box-shadow: 0 0 10px #0ff, 0 0 30px #0ff, 0 0 60px #0ff;
+        }
+        
+        /* Styles pour les champs de formulaire */
+        .form-input {
+            background-color: #1f2937; /* Gris sombre pour le champ */
+            border: 1px solid #374151; /* Bordure subtile */
+            color: #f0f4f8;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #0ff; /* Bordure cyan au focus */
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Petit glow au focus */
+        }
+
+        #menu-toggle:checked ~ #menu-content {
+            display: block;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- En-tête et Navigation -->
+    <header class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm shadow-xl p-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#accueil" class="text-3xl font-extrabold text-white tracking-widest uppercase neon-text">DJ Titou</a>
+            
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-lg font-medium text-gray-300 hover:text-cyan-400 transition duration-300">Accueil</a>
+                <a href="#mixes" class="text-lg font-medium text-gray-300 hover:text-cyan-400 transition duration-300">Mixes</a>
+                <a href="#dates" class="text-lg font-medium text-gray-300 hover:text-cyan-400 transition duration-300">Dates</a>
+                <a href="#bio" class="text-lg font-medium text-gray-300 hover:text-cyan-400 transition duration-300">Bio</a>
+                <a href="#contact" class="text-lg font-medium text-gray-300 hover:text-cyan-400 transition duration-300">Contact</a>
+            </nav>
+
+            <!-- Bouton du Menu Mobile (Hamburger) -->
+            <div class="md:hidden">
+                <input type="checkbox" id="menu-toggle" class="hidden">
+                <label for="menu-toggle" class="cursor-pointer text-gray-300 hover:text-cyan-400">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </label>
+            </div>
+        </div>
+
+        <!-- Contenu du Menu Mobile -->
+        <div id="menu-content" class="hidden md:hidden">
+            <nav class="flex flex-col space-y-2 mt-4">
+                <a href="#accueil" onclick="closeMenu()" class="block py-2 text-center text-lg font-medium text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg">Accueil</a>
+                <a href="#mixes" onclick="closeMenu()" class="block py-2 text-center text-lg font-medium text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg">Mixes</a>
+                <a href="#dates" onclick="closeMenu()" class="block py-2 text-center text-lg font-medium text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg">Dates</a>
+                <a href="#bio" onclick="closeMenu()" class="block py-2 text-center text-lg font-medium text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg">Bio</a>
+                <a href="#contact" onclick="closeMenu()" class="block py-2 text-center text-lg font-medium text-gray-300 hover:bg-gray-800 transition duration-300 rounded-lg">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Section d'Accueil (Héros) AVEC VIDÉO DE FOND -->
+    <section id="accueil" class="relative min-h-screen flex flex-col justify-center items-center text-center p-4 overflow-hidden">
+        
+        <!-- Vidéo de fond (z-0) -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="197621-905015075_small.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la balise vidéo.
+        </video>
+
+        <!-- Overlay sombre pour garantir la lisibilité du texte (z-10) -->
+        <div class="absolute inset-0 bg-black opacity-60 z-10"></div>
+        
+        <!-- Contenu Texte de la section (z-20) -->
+        <div class="relative z-20 p-6 md:p-12">
+            <p class="text-xl md:text-2xl text-cyan-400 mb-4 font-semibold uppercase tracking-wider">Énergie illimitée. Vibes inoubliables.</p>
+            <h1 class="text-6xl md:text-8xl lg:text-[10rem] font-black text-white leading-none mb-8 uppercase">DJ Titou</h1>
+            
+            <!-- Bouton pour écouter le dernier mix -->
+            <a href="#mixes" class="inline-block px-10 py-4 text-xl font-bold rounded-full uppercase tracking-widest neon-button border-2 border-cyan-400 text-cyan-400">
+                Écouter le Dernier Mix
+            </a>
+            
+            <!-- Flèche vers le bas -->
+            <a href="#mixes" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-10 h-10 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section des Mixes -->
+    <section id="mixes" class="py-20 p-4 max-w-7xl mx-auto">
+        <h2 class="text-5xl font-extrabold text-center mb-12 neon-text">Mes Derniers Mixes</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Carte Mix 1 : SoundCloud -->
+            <a href="https://www.youtube.com/watch?v=GR_GscniGps" target="_blank" class="block bg-gray-800 rounded-xl shadow-2xl overflow-hidden hover:scale-[1.02] transition duration-300 p-6 border-2 border-transparent hover:border-cyan-400 group cursor-pointer">
+                <h3 class="text-2xl font-bold mb-3 text-cyan-300 group-hover:text-cyan-200 transition duration-300">Dale X I Feel It Coming (DJ Titou Remix)</h3>
+                <p class="text-gray-400 mb-4">Hamza Ft. Aya Nakamura X Daft Punk</p>
+                <!-- Image de couverture -->
+                <img src="VID2.png" 
+                     alt="Pochette du Mix DJ Titou" 
+                     class="w-full h-40 object-cover rounded-lg mb-4" />
+                
+                <!-- Texte d'action -->
+                <p class="mt-4 block text-center font-semibold text-cyan-400 group-hover:text-cyan-300 transition duration-300">Écouter sur YouTube →</p>
+            </a>
+
+            <!-- Carte Mix 2 :  -->
+            <a href="https://www.youtube.com/watch?v=jrfqiLxUKl8" target="_blank" class="block bg-gray-800 rounded-xl shadow-2xl overflow-hidden hover:scale-[1.02] transition duration-300 p-6 border-2 border-transparent hover:border-cyan-400 group cursor-pointer">
+                <h3 class="text-2xl font-bold mb-3 text-cyan-300 group-hover:text-cyan-200 transition duration-300">Solide (DJ Titou Remix)</h3>
+                <p class="text-gray-400 mb-4">Franglish</p>
+                <!-- Image de couverture -->
+                <img src="Vid.png" 
+                     alt="Pochette du Mix DJ Titou" 
+                     class="w-full h-40 object-cover rounded-lg mb-4" />
+
+                <!-- Texte d'action -->
+                <p class="mt-4 block text-center font-semibold text-cyan-400 group-hover:text-cyan-300 transition duration-300">Écouter sur YouTube →</p>
+            </a>
+
+            <!-- Carte Mix 3 : ENTIÈREMENT CLICABLE -->
+            <a href="https://www.youtube.com/watch?v=Oi29vdibjv4" target="_blank" class="block bg-gray-800 rounded-xl shadow-2xl overflow-hidden hover:scale-[1.02] transition duration-300 p-6 border-2 border-transparent hover:border-cyan-400 group cursor-pointer">
+                <h3 class="text-2xl font-bold mb-3 text-cyan-300 group-hover:text-cyan-200 transition duration-300">Olé Olé (DJ Titou Remix)</h3>
+                <p class="text-gray-400 mb-4">Bianca Costa</p>
+                <!-- Image de couverture -->
+                <img src="vid3.png" 
+                     alt="Pochette du Mix DJ Titou"
+                     class="w-full h-40 object-cover rounded-lg mb-4" />
+
+                <!-- Texte d'action -->
+                <p class="mt-4 block text-center font-semibold text-cyan-400 group-hover:text-cyan-300 transition duration-300">Voir sur YouTube →</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section des Dates de Tournée -->
+    <section id="dates" class="bg-gray-900 py-20 p-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl font-extrabold text-center mb-12 neon-text text-pink-400">Prochaines Dates</h2>
+            
+            <div class="space-y-8">
+                
+                <!-- TITRE MOIS : NOVEMBRE -->
+                <h3 class="text-3xl font-extrabold text-pink-300 border-b-2 border-pink-500 pb-2 mb-6 uppercase tracking-wider neon-text">NOVEMBRE</h3>
+
+                <!-- Date 1 (NOV) -->
+                <div class="flex flex-col md:flex-row justify-between items-center bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-pink-500 hover:bg-gray-700 transition duration-300">
+                    <div class="text-center md:text-left mb-3 md:mb-0">
+                        <p class="text-2xl font-extrabold text-white">29 NOV</p>
+                        <p class="text-sm text-gray-400">00:00 - 06:00</p>
+                    </div>
+                    <div class="text-center md:text-left flex-1 mx-4">
+                        <h4 class="text-xl font-bold text-pink-300">WHY NOT</h4>
+                        <p class="text-lg text-gray-300">MONTAUBAN, France</p>
+                    </div>
+                    <!-- Lien cliquable pour les billets (Ouvre dans un nouvel onglet) -->
+                    <a href="https://billetterie-club-electrique.com/djtito" target="_blank" class="text-white bg-pink-600 hover:bg-pink-700 font-bold py-2 px-6 rounded-full transition duration-300">
+                        Billets
+                    </a>
+                </div>
+
+                <!-- TITRE MOIS : DÉCEMBRE -->
+                <h3 class="text-3xl font-extrabold text-pink-300 border-b-2 border-pink-500 pb-2 mb-6 uppercase tracking-wider neon-text pt-4">DECEMBRE</h3>
+                
+                <!-- Date 2 (DÉC) -->
+                <div class="flex flex-col md:flex-row justify-between items-center bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-pink-500 hover:bg-gray-700 transition duration-300">
+                    <div class="text-center md:text-left mb-3 md:mb-0">
+                        <p class="text-2xl font-extrabold text-white">06 DÉC</p>
+                        <p class="text-sm text-gray-400">23:00 - 02:00</p>
+                    </div>
+                    <div class="text-center md:text-left flex-1 mx-4">
+                        <h4 class="text-xl font-bold text-pink-300">LE BIKINI</h4>
+                        <p class="text-lg text-gray-300">TOULOUSE, France</p>
+                    </div>
+                    <!-- Lien cliquable pour les billets (Ouvre dans un nouvel onglet) -->
+                    <a href="https://ticketmaster.be/cosmic-sound-djtito" target="_blank" class="text-white bg-pink-600 hover:bg-pink-700 font-bold py-2 px-6 rounded-full transition duration-300">
+                        Billets
+                    </a>
+                </div>
+
+                <!-- Date 3 (DÉC) -->
+                <div class="flex flex-col md:flex-row justify-between items-center bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-pink-500 hover:bg-gray-700 transition duration-300">
+                    <div class="text-center md:text-left mb-3 md:mb-0">
+                        <p class="text-2xl font-extrabold text-white">20 DÉC</p>
+                        <p class="text-sm text-gray-400">00:00 - 03:00</p>
+                    </div>
+                    <div class="text-center md:text-left flex-1 mx-4">
+                        <h4 class="text-xl font-bold text-pink-300">O'CLUB</h4>
+                        <p class="text-lg text-gray-300">TOULOUSE, France</p>
+                    </div>
+                    <p class="text-gray-500 font-bold py-2 px-6">Complet</p>
+                    <a></a>
+                    </div>
+
+                <!-- TITRE MOIS : JANVIER 2026 -->
+                <h3 class="text-3xl font-extrabold text-pink-300 border-b-2 border-pink-500 pb-2 mb-6 uppercase tracking-wider neon-text pt-4">JANVIER 2026</h3>
+
+                <!-- Date 4 (JANV) -->
+                <div class="flex flex-col md:flex-row justify-between items-center bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-pink-500 hover:bg-gray-700 transition duration-300">
+                    <div class="text-center md:text-left mb-3 md:mb-0">
+                        <p class="text-2xl font-extrabold text-white">3 JANV</p>
+                        <p class="text-sm text-gray-400">00:00 - 03:00</p>
+                    </div>
+                    <div class="text-center md:text-left flex-1 mx-4">
+                        <h4 class="text-xl font-bold text-pink-300">WHY NOT</h4>
+                        <p class="text-lg text-gray-300">MONTAUBAN, France</p>
+                    </div>
+                    <!-- Lien cliquable pour les billets (Ouvre dans un nouvel onglet) -->
+                    <a href="https://billetterie-club-electrique.com/djtito" target="_blank" class="text-white bg-pink-600 hover:bg-pink-700 font-bold py-2 px-6 rounded-full transition duration-300">
+                        Billets
+                    </a>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Bio (À Propos) -->
+    <section id="bio" class="py-20 p-4 max-w-4xl mx-auto">
+        <h2 class="text-5xl font-extrabold text-center mb-12 neon-text">À Propos de DJ Titou</h2>
+        
+        <div class="bg-gray-800 p-8 md:p-12 rounded-xl shadow-2xl flex flex-col md:flex-row items-center gap-8">
+            <div class="w-48 h-48 flex-shrink-0 rounded-full overflow-hidden border-4 border-cyan-400 shadow-xl">
+                <!-- Photo de profil fictive de DJ Titou -->
+                <img src="Design sans titre.png" 
+                     onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#1f2937'; this.parentElement.innerHTML='<p class=\'text-center text-sm text-gray-400 p-16\'>Photo</p>'"
+                     alt="Portrait de DJ Titou" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="text-lg text-gray-300">
+                <p class="mb-4">Originaire de MONTAUBAN, DJ Titou est rapidement devenu une figure incontournable de la scène électronique et urbain. Avec une capacité unique à fusionner les genres allant de House, à Urabin/Shatta et à Techno/Electro, il crée des sets qui sont de véritables voyages auditifs.</p>
+                <p class="mb-4">Son secret ? Une énergie inépuisable derrière les platines et une sélection musicale pointue qui ne laisse personne indifférent. Que ce soit en festival ou dans des clubs, Titou transforme chaque événement en une expérience collective et euphorique. Suivez le mouvement !</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de Page / Contact -->
+    <footer id="contact" class="bg-gray-950 py-12 p-4 mt-16 border-t border-gray-800">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="text-4xl font-extrabold mb-6 neon-text text-cyan-400">Demande de Booking & Presse</h2>
+            
+            <p class="text-lg text-gray-400 mb-4">Pour toute demande professionnelle (booking, interview, partenariat), contactez-moi directement ou utilisez le formulaire ci-dessous :</p>
+
+            <!-- Lien E-mail Cliquable (MIS À JOUR) -->
+            <div class="mb-8 p-4 bg-gray-800 rounded-lg border border-cyan-600 shadow-lg">
+                <!-- Nouvel e-mail : contact.djtitou@gmail.com -->
+                <a href="mailto:contact.djtitou@gmail.com" class="flex items-center justify-center text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition duration-300">
+                    <!-- Icône (Lucide: Mail) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-3"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    contact.djtitou@gmail.com
+                </a>
+            </div>
+            <!-- Fin du Lien E-mail Cliquable -->
+
+            <!-- Formulaire de Contact (Utilise Formspree) -->
+            <!-- REMPLACER CETTE ACTION URL PAR VOTRE PROPRE LIEN FORMSPREE ! -->
+            <form action="https://formspree.io/f/xvonzgka" method="POST" class="space-y-4 text-left">
+                
+                <!-- Nom et Email -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" name="name" placeholder="Votre Nom / Organisation" required
+                        class="form-input p-3 rounded-lg w-full">
+                    
+                    <input type="email" name="email" placeholder="Votre Email Professionnel" required
+                        class="form-input p-3 rounded-lg w-full">
+                </div>
+                
+                <!-- Sujet -->
+                <select name="subject" required class="form-input p-3 rounded-lg w-full appearance-none">
+                    <option value="" disabled selected>Objet de la demande</option>
+                    <option value="Booking">Booking / Réservation</option>
+                    <option value="Press">Presse / Interview</option>
+                    <option value="Partnership">Partenariat / Collaboration</option>
+                    <option value="Other">Autre</option>
+                </select>
+
+                <!-- Message -->
+                <textarea name="message" rows="5" placeholder="Décrivez votre demande en détail..." required
+                    class="form-input p-3 rounded-lg w-full resize-none"></textarea>
+                
+                <!-- Bouton Envoyer -->
+                <button type="submit" class="w-full px-8 py-3 text-lg font-bold rounded-lg uppercase tracking-wider neon-button border-2 border-pink-500 bg-pink-600 text-white hover:bg-pink-700">
+                    Envoyer la Demande
+                </button>
+            </form>
+            
+            <!-- Réseaux Sociaux et Copyright (MIS À JOUR) -->
+            <div class="mt-10">
+                <div class="flex justify-center space-x-6 mb-4">
+                    
+                    <!-- Icône Instagram : @djtitou_off -->
+                    <a href="https://instagram.com/djtitou_off" target="_blank" class="text-gray-400 hover:text-pink-500 transition duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.686 2 8.337 2.013 7.057 2.072 5.776 2.132 4.908 2.296 4.148 2.651 3.388 3.005 2.766 3.593 2.274 4.085 1.782 4.577 1.394 5.199 1.039 5.959 0.684 6.719 0.52 7.587 0.46 8.867 0.407 10.147 0.407 10.5 0.407 13.5 0.407 13.853 0.407 15.133 0.46 16.413 0.52 17.281 0.684 18.041 1.039 18.801 1.394 19.423 1.782 20.011 2.274 20.503 2.766 20.891 3.388 21.246 4.148 21.601 4.908 21.765 5.776 21.825 7.057 21.884 8.337 21.897 12 21.897 15.314 21.897 15.663 21.884 16.943 21.825 18.224 21.765 19.092 21.601 19.852 21.246 20.612 20.891 21.234 20.503 21.726 20.011 22.218 19.423 22.606 18.801 22.961 18.041 23.316 17.281 23.48 16.413 23.54 15.133 23.593 13.853 23.593 10.5 23.593 10.147 23.593 8.867 23.54 7.587 23.48 6.719 23.316 5.959 22.961 5.199 22.606 4.577 22.218 4.085 21.726 3.593 21.234 3.005 20.891 2.651 20.503 2.296 19.852 2.132 19.092 2.072 17.811 2.013 16.53 2 12 2zm0 3.75c-4.423 0-8 3.577-8 8s3.577 8 8 8 8-3.577 8-8-3.577-8-8-8zm0 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm5.5-10.5c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5z"/></svg>
+                    </a>
+                    
+                    <!-- Icône TikTok : @dj.titou (Utilisation d'un SVG générique pour la musique/vidéo) -->
+                    <a href="https://tiktok.com/@dj.titou" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-300">
+                         <!-- SVG de TikTok -->
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.55 1.15c.16-.07.33-.11.5-.12 2.73-.59 5.37.58 6.9 2.97-.2.03-.4.07-.6.13-1.43.34-2.54 1.57-2.6 3.01-.1.21-.13.43-.17.65-.05.28-.08.56-.13.84-.04.28-.07.56-.12.84-.06.33-.12.66-.2.99-.08.33-.18.66-.27.99-.1.33-.21.66-.33.99-.13.33-.27.66-.41.99-.16.33-.33.66-.51.99-.18.33-.37.66-.58.98-.21.32-.44.64-.67.95-.24.32-.48.63-.74.93-.27.3-.55.59-.84.87-.29.28-.59.56-.9.82-.32.27-.64.51-.97.74-.34.23-.68.45-1.03.65-.35.2-.71.39-1.07.57-.37.18-.74.34-1.12.49-.38.15-.77.28-1.16.4-.39.12-.79.23-1.19.33-.4.1-.81.18-1.22.25-.41.07-.82.13-1.24.18-.42.05-.84.1-.64 0h-.34v-2.22c.2.04.4.08.6.12 1.62.29 3.03-.84 3.32-2.45.03-.16.08-.31.14-.46.06-.15.14-.29.23-.43.1-.15.22-.28.34-.41.13-.13.27-.25.42-.36.16-.12.33-.22.5-.32.18-.1.38-.19.58-.27.21-.09.42-.16.63-.23.23-.07.45-.13.68-.19.24-.05.48-.1.72-.14.24-.04.48-.08.73-.1.25-.03.5-.06.75-.07.25-.01.5-.02.75-.02.13 0 .25 0 .37.01v-3.79c-1.34.02-2.66-.18-3.92-.61-1.36-.45-2.58-1.27-3.56-2.47-.94-1.1-1.63-2.41-1.95-3.88-.32-1.47-.2-2.98.34-4.4a8.6 8.6 0 0 1 1.05-1.74c.2-.28.4-.55.62-.82.22-.26.46-.5.71-.73.26-.23.53-.44.81-.64.28-.2.58-.38.89-.54.31-.16.64-.3.97-.43.34-.13.69-.24 1.05-.33.36-.09.73-.15 1.1-.19.38-.04.75-.06 1.13-.06 2.37 0 4.7.53 6.78 1.54 1.25.62 2.37 1.48 3.29 2.57.92 1.09 1.55 2.36 1.83 3.75.29 1.39.16 2.76-.36 4.09l-2.07-.75c.34-.84.38-1.72.13-2.6-.25-.88-.8-1.66-1.57-2.34-1.27-1.12-2.92-1.73-4.66-1.72-1.12 0-2.22.25-3.23.75-.1.05-.2.1-.3.15-.09.05-.19.1-.28.15z"/></svg>
+                    </a>
+
+                    <!-- Icône YouTube : DJ_Titou -->
+                    <a href="https://youtube.com/@DJ_Titou" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300">
+                         <!-- SVG de YouTube -->
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M21.543 6.443c-.23-.84-1.12-1.34-2.11-.93-3.61 1.48-7.39 1.48-11 0-.99-.41-1.88.09-2.11.93a26.04 26.04 0 0 0-.25 3.32c0 1.25.08 2.5.25 3.75.23.84 1.12 1.34 2.11.93 3.61-1.48 7.39-1.48 11 0 .99.41 1.88-.09 2.11-.93a26.04 26.04 0 0 0 .25-3.75c0-1.25-.08-2.5-.25-3.32zm-7.057 5.75L9.5 9.17v5.66l4.986-3.08z"/></svg>
+                    </a>
+                    
+                    <!-- Icône SoundCloud : https://soundcloud.com/dj_titou/tracks -->
+                    <a href="https://soundcloud.com/dj_titou/tracks" target="_blank" class="text-gray-400 hover:text-orange-500 transition duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.362 10.43c1.996.113 2.638 1.488 2.638 2.57 0 1.258-.598 2.37-2.67 2.37-.53 0-1.346-.11-2.074-.35.037-.024.08-.047.126-.07.72-.4 1.16-.976 1.16-1.95 0-1.11-.632-1.89-2.007-2.003-1.42-.116-2.003.743-2.003 1.83 0 1.4.928 2.454 2.76 2.454 1.29 0 2.258-.456 2.454-.61.02.046.03.07.05.106.126.24.237.47.38.71-.47.16-1.12.33-1.88.33-3.21 0-5.83-2.71-5.83-6.103s2.62-6.103 5.83-6.103c2.753 0 5.09 1.84 5.75 4.38.04.18.06.37.06.55 0 .15-.02.3-.06.45-.19 1.05-.7 1.88-1.7 2.05-1.07.18-1.9-.3-1.9-.92 0-.64.57-1.28 1.8-1.35zM8.07 10.22c-1.84 0-3.32 1.87-3.32 4.17 0 2.28 1.48 4.15 3.32 4.15 1.85 0 3.34-1.87 3.34-4.15 0-2.3-1.49-4.17-3.34-4.17z"/></svg>
+                    </a>
+                </div>
+                
+                <p class="text-sm text-gray-500">© 2025 DJ Titou. Tous droits réservés. | Conçu avec passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript pour le Menu Mobile et la Navigation -->
+    <script>
+        // Fonction pour fermer le menu mobile lors du clic sur un lien
+        function closeMenu() {
+            document.getElementById('menu-toggle').checked = false;
+        }
+
+        // Script pour gérer le défilement fluide (pour une meilleure compatibilité)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // On vérifie si c'est un lien d'ancrage interne
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    // Empêcher l'action par défaut du lien
+                    e.preventDefault();
+                    
+                    // Trouver l'élément cible
+                    const targetElement = document.querySelector(href);
+                    
+                    if (targetElement) {
+                        // Défilement fluide vers l'élément cible
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                // Si ce n'est pas un # (comme les liens de billetterie ou mailto:), le comportement par défaut est conservé.
+            });
+        });
+    </script>
+
+</body>
+</html>
